@@ -1,7 +1,7 @@
 import "./index.css";
-import { Composition } from "remotion";
-import { Timer, timerSchema } from "./scenes/timer/timer";
-import { Countdown, countdownSchema } from "./scenes/timer/countdown";
+import { Composition, staticFile } from "remotion";
+import { Timer, timerSchema } from "./scenes/timer";
+import { Countdown, countdownSchema } from "./scenes/countdown";
 import { durationToSeconds } from "./types/duration";
 
 // Each <Composition> is an entry in the sidebar!
@@ -29,6 +29,9 @@ export const RemotionRoot: React.FC = () => {
             minutes: 5,
             seconds: 0,
           },
+          song: staticFile(
+            "assets/songs/_si_lo_haces_por__l__lo_haces_por_m__.mp4",
+          ),
         }}
       />
       <Composition

@@ -3,18 +3,19 @@ import {
   durationToSeconds,
   formatDuration,
   secondsToDuration,
-} from "../../types/duration";
+} from "../types/duration";
 import { useMemo } from "react";
-import { Clock } from "../../components/clock";
+import { Clock } from "../components/clock";
 import { z } from "zod";
-import { useFrameTimer } from "../../hooks/use-frame-timer";
-import { Audio, staticFile } from "remotion";
+import { useFrameTimer } from "../hooks/use-frame-timer";
+import { Audio } from "remotion";
 
 export const countdownSchema = z.object({
   duration: durationSchema,
+  song: z.string(),
 });
 
-export function Countdown({ duration }: z.infer<typeof countdownSchema>) {
+export function Countdown({ duration, song }: z.infer<typeof countdownSchema>) {
   const { timeElapsedSeconds } = useFrameTimer();
 
   const durationInSeconds = useMemo(
@@ -33,11 +34,7 @@ export function Countdown({ duration }: z.infer<typeof countdownSchema>) {
     <>
       <Clock duration={durationLeft} />
 
-      <Audio
-        src={staticFile(
-          "assets/songs/_si_lo_haces_por__l__lo_haces_por_m__.mp4",
-        )}
-      />
+      <Audio src={song} />
     </>
   );
 }
