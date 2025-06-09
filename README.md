@@ -1,15 +1,7 @@
-# Remotion video
+# JW Timer with Song Remotion
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.gif">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
-
-Welcome to your Remotion project!
+A Remotion project to create a video timer with a song from JW.org.
+This project allows you to create a countdown timer video with a song from JW.org, using Remotion. The timer can be customized in terms of duration and the song can be downloaded and used in the video.
 
 ## Commands
 
@@ -31,24 +23,8 @@ npm run dev
 npx remotion render
 ```
 
-**Upgrade Remotion**
+## To download the latest song locally
 
 ```console
-npx remotion upgrade
+npm run scripts:download-jw-song
 ```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).

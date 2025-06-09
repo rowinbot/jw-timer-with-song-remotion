@@ -1,4 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  formatDuration,
+  FormattedDuration,
+  secondsToDuration,
+} from "../types/duration";
 
 export function useTimer(props: { isRunning: boolean }) {
   const animationFrameIdRef = useRef<number | null>(null);
@@ -32,18 +37,14 @@ export function useTimer(props: { isRunning: boolean }) {
     setTimeElapsedSeconds(0);
   }, []);
 
-  const timer = useMemo(() => {
-    const minutes = Math.floor(timeElapsedSeconds / 60);
-    const seconds = Math.floor(timeElapsedSeconds % 60);
-    const formattedMinutes = String(minutes).padStart(2, "0");
-    const formattedSeconds = String(seconds).padStart(2, "0");
-
-    return { minutes: formattedMinutes, seconds: formattedSeconds };
+  const duration = useMemo((): FormattedDuration => {
+    const duration = secondsToDuration(timeElapsedSeconds);
+    return formatDuration(duration);
   }, [timeElapsedSeconds]);
 
   return {
     timeElapsedSeconds,
-    timer,
+    duration,
     stop,
     reset,
   };

@@ -1,16 +1,36 @@
 import "./index.css";
 import { Composition } from "remotion";
 import { Timer, timerSchema } from "./scenes/timer/timer";
+import { Countdown, countdownSchema } from "./scenes/timer/countdown";
+import { durationToSeconds } from "./types/duration";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   const frames = 30;
-  const durationInSeconds = 5 * 60;
+  const durationInSeconds = durationToSeconds({
+    minutes: 5,
+  });
   const durationInFrames = frames * durationInSeconds;
 
   return (
     <>
+      <Composition
+        id="Countdown"
+        component={Countdown}
+        durationInFrames={durationInFrames}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={countdownSchema}
+        defaultProps={{
+          duration: {
+            hours: 0,
+            minutes: 5,
+            seconds: 0,
+          },
+        }}
+      />
       <Composition
         id="Timer"
         component={Timer}
